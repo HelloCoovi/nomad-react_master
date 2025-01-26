@@ -59,6 +59,7 @@ const GlobalStyle = createGlobalStyle`
   /* 커스텀 */
   a {
     text-decoration: none;
+    color:inherit;
   }
   * {
     box-sizing: border-box;
