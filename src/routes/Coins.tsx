@@ -38,7 +38,12 @@ export default function Coins() {
         <S.CoinsList>
           {coins.map((coin) => (
             <S.Coin key={coin.id}>
-              <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+              <Link to={`/${coin.id}`} state={{ coinName: coin.name }}>
+                <S.CoinImg
+                  src={`https://cryptoicon-api.pages.dev/icons/128/color/${coin.symbol.toLowerCase()}.png`}
+                />
+                {coin.name} &rarr;
+              </Link>
             </S.Coin>
           ))}
         </S.CoinsList>
@@ -70,15 +75,21 @@ const S = {
     border-radius: 15px;
     margin-bottom: 10px;
     a {
+      display: flex;
+      align-items: center;
       padding: 20px;
       transition: color 0.2s ease-in;
-      display: block;
     }
     &:hover {
       a {
         color: ${(props) => props.theme.accentColor};
       }
     }
+  `,
+  CoinImg: styled.img`
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
   `,
 
   Loader: styled.span`
