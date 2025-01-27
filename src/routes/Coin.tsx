@@ -2,11 +2,18 @@ import styled from "styled-components";
 import { useState } from "react";
 import { useParams, useLocation } from "react-router";
 
+import { Outlet } from "react-router-dom";
 export default function Coin() {
   const params = useParams();
   const location = useLocation();
 
   const [isLoading, setIsLoading] = useState(true);
+
+  console.log(
+    `\n┏━━━ 💡 💡 params 💡 💡 ━━━\n`,
+    params,
+    `\n┗━━━━━━ 💡 💡 💡 💡 💡 ━━━━━━━━━\n`
+  );
 
   return (
     <S.Container>
@@ -14,6 +21,8 @@ export default function Coin() {
         <S.Title>{location?.state?.coinName || "Loading..."}</S.Title>
       </S.Header>
       {isLoading ? <S.Loader>Loading...</S.Loader> : null}
+
+      <Outlet />
     </S.Container>
   );
 }
